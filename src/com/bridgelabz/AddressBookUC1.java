@@ -10,9 +10,10 @@ import java.util.Scanner;
 public class AddressBookUC1 {
 
 
-
+	//Creating arraylist object
 	ArrayList<Persons> persons;
 
+	//created constructor
 	public AddressBookUC1() {
 		persons=new ArrayList<Persons>();
 
@@ -29,8 +30,11 @@ public class AddressBookUC1 {
 					+person.getCity()+"\t"+person.getState()+ "\t"+person.getZip()+"\t"+person.getPhone_number()+"\t"+person.getEmail());
 
 	}
+	//method to add person details to array list
 	public void addPerson() {
+		//creating Scanner object to get input from user
 		Scanner sc=new Scanner(System.in);
+		//taking input from user using scanner object
 		System.out.println("Enter First Name");
 		String first_name=sc.next();
 
@@ -68,6 +72,7 @@ public class AddressBookUC1 {
 			this.persons.add(p);
 		}
 	}
+	//Method to edit person details from array list
 	private void editPerson(String n) {
 		// 
 		for(int i=0;i<persons.size();i++) {
@@ -120,7 +125,20 @@ public class AddressBookUC1 {
 			//System.out.println(p);
 		}
 	}
+	//Method to delete values from arraylist
+	private void deletePerson(String fname) {
+		for(int i=0;i<persons.size();i++) {
+			Persons p=(Persons)persons.get(i);
+			System.out.println("person details are");
+			if(fname.equals(p.getFirst_name()))
+			{
+				persons.remove(i);
+				System.out.println("Record deleted successfully");
+			}
+		}
 
+
+	}
 
 	public static void main(String[] args) {
 
@@ -129,7 +147,7 @@ public class AddressBookUC1 {
 		System.out.println("Choose option to perform action");
 		System.out.println("Please Enter 1 to add person details");
 		System.out.println("Please Enter 2 to edit person details");
-
+		System.out.println("Enter 3 to delete person details");
 		Scanner sc=new Scanner(System.in);
 		int num=sc.nextInt();
 		char choice;
@@ -144,6 +162,12 @@ public class AddressBookUC1 {
 				System.out.println("Enter name to edit");
 				String name=sc.next();
 				ab.editPerson(name);
+				ab.display();
+				break;
+			case 3:
+				System.out.println("Enter Name to Delete ");
+				String fname=sc.next();
+				ab.deletePerson(fname);
 				ab.display();
 				break;
 
