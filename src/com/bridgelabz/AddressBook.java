@@ -7,14 +7,14 @@ import java.util.Scanner;
  * @author mounika
  *
  */
-public class AddressBookUC1 {
+public class AddressBook {
 
 
 	//Creating arraylist object
 	ArrayList<Persons> persons;
 
 	//created constructor
-	public AddressBookUC1() {
+	public AddressBook() {
 		persons=new ArrayList<Persons>();
 
 	}
@@ -74,41 +74,32 @@ public class AddressBookUC1 {
 	}
 	//Method to edit person details from array list
 	private void editPerson(String n) {
-		// 
+	
 		for(int i=0;i<persons.size();i++) {
 			Persons p=(Persons)persons.get(i);
 			System.out.println("person details are");
-			if(n.equals(p.getFirst_name()))
+			if(n.equalsIgnoreCase(p.getFirst_name()))
 			{
 				Scanner sc=new Scanner(System.in);
 
-				//p.setFirst_name(first_name);
 
 				System.out.println("Enter Last Name");
 				String last_name=sc.next();
-				//p.setFirst_name(first_name);
-				//p.setLast_name(last_name);
-
-
+			
 				System.out.println("Enter Address");
 				String address=sc.next();
-				//p.setAddress(address);
 
 				System.out.println("Enter City");
 				String city=sc.next();
-				//p.setCity(city);
 
 				System.out.println("Enter State");
 				String state=sc.next();
-				//p.setState(state);
 
 				System.out.println("Enter Zip code");
 				String zip=sc.next();
-				//p.setZip(zip);
 
 				System.out.println("Enter Phone Number");
 				int phone_number=sc.nextInt();
-				//p.setPhone_number(phone_number);
 
 				System.out.println("Enter email");
 				String email=sc.next();
@@ -122,11 +113,11 @@ public class AddressBookUC1 {
 				p.setPhone_number(phone_number);
 				p.setEmail(email);
 			}
-			//System.out.println(p);
 		}
 	}
 	//Method to delete values from arraylist
 	private void deletePerson(String fname) {
+		
 		for(int i=0;i<persons.size();i++) {
 			Persons p=(Persons)persons.get(i);
 			System.out.println("person details are");
@@ -142,24 +133,27 @@ public class AddressBookUC1 {
 
 	public static void main(String[] args) {
 
-		AddressBookUC1 ab=new AddressBookUC1();
-
-		System.out.println("Choose option to perform action");
+		AddressBook ab=new AddressBook();
+		int num;
+		do {
 		System.out.println("Please Enter 1 to add person details");
 		System.out.println("Please Enter 2 to edit person details");
-		System.out.println("Enter 3 to delete person details");
+		System.out.println("Please Enter 3 to delete person details");
+		System.out.println("Choose option to perform action");
 		Scanner sc=new Scanner(System.in);
-		int num=sc.nextInt();
-		char choice;
-		do {
+		 num=sc.nextInt();
+		
 			switch(num) {
 			case 1:
-
+			
 				ab.addPerson();
+				
 				ab.display();
+		
 				break;
+				
 			case 2:
-				System.out.println("Enter name to edit");
+				System.out.println("Enter name to Edit");
 				String name=sc.next();
 				ab.editPerson(name);
 				ab.display();
@@ -170,15 +164,9 @@ public class AddressBookUC1 {
 				ab.deletePerson(fname);
 				ab.display();
 				break;
-
+				
 			}
-			System.out.println("Do You Want To Continue(Y/N)");
-			choice = sc.next().charAt(0);
-
-		}
-		while(choice == 'Y'|| choice == 'y');
-
-
+			
+	}while(num!=0);
 	}
 }
-
