@@ -33,6 +33,7 @@ public class AddressBook {
 	//method to add person details to array list
 	public void addPerson() {
 		//creating Scanner object to get input from user
+		
 		Scanner sc=new Scanner(System.in);
 		//taking input from user using scanner object
 		System.out.println("Enter First Name");
@@ -70,17 +71,20 @@ public class AddressBook {
 		}
 		if(!isInList){
 			this.persons.add(p);
+			System.out.println("Person details added successfully");
 		}
 	}
 	//Method to edit person details from array list
-	private void editPerson(String n) {
+	public void editPerson() {
 	
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter name of the person to Edit");
+		String editpersonname=sc.next();
 		for(int i=0;i<persons.size();i++) {
 			Persons p=(Persons)persons.get(i);
 			System.out.println("person details are");
-			if(n.equalsIgnoreCase(p.getFirst_name()))
+			if(editpersonname.equalsIgnoreCase(p.getFirst_name()))
 			{
-				Scanner sc=new Scanner(System.in);
 
 
 				System.out.println("Enter Last Name");
@@ -116,8 +120,10 @@ public class AddressBook {
 		}
 	}
 	//Method to delete values from arraylist
-	private void deletePerson(String fname) {
-		
+	public void deletePerson() {
+		Scanner sc1=new  Scanner(System.in);
+		System.out.println("Enter person name to Delete");
+		String fname=sc1.next();
 		for(int i=0;i<persons.size();i++) {
 			Persons p=(Persons)persons.get(i);
 			System.out.println("person details are");
@@ -131,42 +137,5 @@ public class AddressBook {
 
 	}
 
-	public static void main(String[] args) {
-
-		AddressBook ab=new AddressBook();
-		int num;
-		do {
-		System.out.println("Please Enter 1 to add person details");
-		System.out.println("Please Enter 2 to edit person details");
-		System.out.println("Please Enter 3 to delete person details");
-		System.out.println("Choose option to perform action");
-		Scanner sc=new Scanner(System.in);
-		 num=sc.nextInt();
-		
-			switch(num) {
-			case 1:
-			
-				ab.addPerson();
-				
-				ab.display();
-		
-				break;
-				
-			case 2:
-				System.out.println("Enter name to Edit");
-				String name=sc.next();
-				ab.editPerson(name);
-				ab.display();
-				break;
-			case 3:
-				System.out.println("Enter Name to Delete ");
-				String fname=sc.next();
-				ab.deletePerson(fname);
-				ab.display();
-				break;
-				
-			}
-			
-	}while(num!=0);
-	}
+	
 }

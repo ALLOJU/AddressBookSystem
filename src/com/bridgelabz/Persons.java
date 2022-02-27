@@ -96,10 +96,13 @@ public class Persons {
 		this.email = email;
 	}
 
+	@Override
+	public String toString() {
+		return "Persons [first_name=" + first_name + ", last_name=" + last_name + ", address=" + address + ", city="
+				+ city + ", state=" + state + ", zip=" + zip + ", phone_number=" + phone_number + ", email=" + email
+				+ "]";
+	}
+
 
 	
-	public void print()
-	{
-		System.out.println("First Name "+first_name+" Last Name "+last_name);
-	}
 }
